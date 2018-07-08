@@ -1,0 +1,22 @@
+{
+  "name": "node-red-contrib-groupme",
+  "version": "0.0.1",
+  "description": "A groupme node for node-red",
+  "dependencies": {},
+  "keywords": [
+    "node-red",
+    "groupme"
+  ],
+  "node-red": {
+    "nodes": {
+      "groupme": "groupme.js"
+    }
+  },
+  "main": "groupme.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Claxton",
+  "license": "MIT"
+}

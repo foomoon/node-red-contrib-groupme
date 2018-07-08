@@ -1,0 +1,116 @@
+
+<script type="text/x-red" data-template-name="groupme-config">
+    <div class="form-row">
+        <label for="node-config-input-config"><i class="fa fa-database"></i> Access</label>
+        <input type="text" id="node-config-input-token" placeholder="token">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-database"></i> Bot</label>
+        <input type="text" id="node-config-input-bot" placeholder="bot">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-database"></i> Name</label>
+        <input type="text" id="node-config-input-name" placeholder="name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('groupme-config',{
+        category: 'config',
+        defaults: {
+        	token: {value:"",required:true},
+     		bot: {value:"",required:true},
+            name: {value:"",required:true}
+        },
+        /*credentials: {
+     		token: {type:"text"},
+     		bot: {type:"text"}
+ 		},*/
+        label: function() {
+            return this.name;
+        }
+    });
+</script>
+
+
+<script type="text/x-red" data-template-name="groupme out">
+    <div class="form-row">
+        <label for="node-input-config"><i class="fa fa-database"></i> Account</label>
+        <input type="text" id="node-input-config">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="groupme">
+    <p>A test node.</p>
+    <p>Help something something</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('groupme out',{
+        category: 'social',
+        color:"#02bef5",
+        defaults: {
+            config: {type:"groupme-config",required:true},
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:0,
+        icon: "groupme.png",
+        label: function() {
+            //var dbNode = RED.nodes.node(this.mydb);
+            return this.name || "groupme";
+        },
+            labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        }
+    });
+</script>
+
+
+
+
+<script type="text/x-red" data-template-name="groupme in">
+    <div class="form-row">
+        <label for="node-input-config"><i class="fa fa-database"></i> Account</label>
+        <input type="text" id="node-input-config">
+    </div>
+    <div class="form-row">
+        <label for="node-input-user"><i class="fa fa-tag"></i> User ID</label>
+        <input type="text" id="node-input-user" placeholder="User ID">
+    </div>
+    <div class="form-row">
+        <label for="node-input-group"><i class="fa fa-tag"></i> Group ID</label>
+        <input type="text" id="node-input-group" placeholder="Group ID">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('groupme in',{
+        category: 'social',
+        color:"#02bef5",
+        defaults: {
+            config: {type:"groupme-config",required:true},
+            user: {value:"",required:true},
+            group: {value:""},
+            name: {value:""}
+        },
+        inputs:0,
+        outputs:1,
+        icon: "groupme.png",
+        label: function() {
+            //var dbNode = RED.nodes.node(this.mydb);
+            return this.name || "groupme";
+        },
+            labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        }
+    });
+</script>
